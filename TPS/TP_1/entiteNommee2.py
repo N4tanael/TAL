@@ -1,15 +1,17 @@
 import nltk
 import replace
+import sys
 nltk.download('averaged_perceptron_tagger')
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
 
+filename = sys.argv[1]
 
-with open('formal-tst.NE.key.04oct95_sample.txt', 'r') as fr:
+with open(filename, 'r') as fr:
     data = fr.read().split('\n')
     
 
-with open('formal-tst.NE.key.04oct95_sample.txt.ne.nltk', 'w') as fw:
+with open(filename + '.ne.nltk', 'w') as fw:
     for d in data:
         tokens = nltk.word_tokenize(d)
         tags = nltk.pos_tag(tokens)
