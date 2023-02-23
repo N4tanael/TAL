@@ -1,0 +1,35 @@
+# toy_en_fr.yaml
+
+## Where the samples will be written
+save_data: toy-enfr/run/example
+## Where the vocab(s) will be written
+src_vocab: toy-ende/run/example.vocab.src
+tgt_vocab: toy-ende/run/example.vocab.tgt
+# Prevent overwriting existing files in the folder
+overwrite: False
+
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: en-fr_europarl/Europarl.en-fr.en
+        path_tgt: en-fr_europarl/Europarl.en-fr.fr
+        shuffle: false # add this line to fix the number of sentences
+        num_examples: 100000 # set the number of sentences to 100000
+    valid:
+        path_src: en-fr_europarl/Europarl.en-fr.en
+        path_tgt: en-fr_europarl/Europarl.en-fr.fr
+
+
+# Vocabulary files that were just created
+src_vocab: toy-enfr/run/example.vocab.src
+tgt_vocab: toy-enfr/run/example.vocab.tgt
+
+# Train on a single GPU
+world_size: 1
+#gpu_ranks: [0]
+
+# Where to save the checkpoints
+save_model: en-fr_europarl/run/model
+save_checkpoint_steps: 500
+train_steps: 1000
+valid_steps: 500
